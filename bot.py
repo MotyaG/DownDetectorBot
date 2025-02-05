@@ -39,7 +39,7 @@ async def timer(message: types.Message):
 
 @dp.message(Command("run"))
 async def run(message: types.Message):
-    if message.from_user.id == 1700698354:
+    if message.from_user.id == id:
         global timer_task
         if timer_task and not timer_task.done():
             await message.answer("Процесс уже запущен!")
@@ -53,7 +53,7 @@ async def run(message: types.Message):
 
 @dp.message(Command("clear"))
 async def clear(message: types.Message):
-    if message.from_user.id == 1700698354:
+    if message.from_user.id == id:
         db.remove_db()
         db.create_db()
         await message.answer("База данных очищена!")
@@ -62,7 +62,7 @@ async def clear(message: types.Message):
 
 @dp.message(Command("stop"))
 async def stop(message: types.Message):
-    if message.from_user.id == 1700698354:
+    if message.from_user.id == id:
         if not stop_event.is_set():
             stop_event.set()
             await message.answer("Процесс остановлен!")
